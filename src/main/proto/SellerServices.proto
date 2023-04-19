@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+import 'Common.proto';
+
+option java_multiple_files = true;
+option java_package = "com.example.DistributedAssignment.cutomer_db.services";
+option java_outer_classname = "SellerServices";
+option objc_class_prefix = "HLW";
+
+service SaleItemServices{
+  rpc putItemForSale(SaleItem) returns (Void) {}
+  rpc changeSalePriceOfItem(ChangeSalePriceRequest) returns (Void) {}
+  rpc removeItemFromSale(RemoveItemFromSaleRequest) returns (Void) {}
+  rpc displayItemsOnSale(UserID) returns ( stream SaleItem ) {}
+  rpc searchItemsForSale(SearchRequest) returns (stream SaleItem) {}
+  rpc getSellerIDForItem(ItemID) returns(UserID) {}
+  rpc getItemDetails(ItemID) returns(SaleItem) {}
+}
+
+message ItemID{
+  int32 itemId = 1;
+}
+
+message SearchRequest {
+  int32 category = 1;
+  string keywords = 2;
+}
+
+message ChangeSalePriceRequest {
+  int32 sellerID = 1;
+  int32 itemID = 2;
+  float newPrice = 3;
+}
+
+message RemoveItemFromSaleRequest {
+  int32 sellerID = 1;
+  int32 itemID = 2;
+  int32 quantity = 3;
+}

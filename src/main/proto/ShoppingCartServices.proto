@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+import 'Common.proto';
+
+option java_multiple_files = true;
+option java_package = "com.example.DistributedAssignment.cutomer_db.services";
+option java_outer_classname = "ShoppingCartServices";
+option objc_class_prefix = "HLW";
+
+service ShoppingCartItemServices {
+  rpc addItemToShoppingCart(ItemToCartRequest) returns (Void) {}
+  rpc removeItemFromShoppingCart(ItemToCartRequest) returns (Void) {}
+  rpc clearShoppingCart(UserID) returns (Void) {}
+  rpc displayShoppingCart(UserID) returns (stream ItemToCartRequest){}
+}
+
+message ItemToCartRequest{
+  int32 userID = 1;
+  int32 itemID = 2;
+  int32 quantity = 3;
+}

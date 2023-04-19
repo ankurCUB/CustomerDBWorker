@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.DistributedAssignment.cutomer_db.services";
+option java_outer_classname = "CommonConstants";
+option objc_class_prefix = "HLW";
+
+message Void {}
+
+message UserID{
+  int32 userId = 1;
+}
+
+message SaleItem{
+  string itemName = 1;
+  int32 category = 2;
+  string keyWords = 3;
+  int32 isNew = 4;
+  float itemPrice = 5;
+  int32 sellerID = 6;
+  int32 quantity = 7;
+  int32 itemID = 8;
+}

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+import 'Common.proto';
+
+option java_multiple_files = true;
+option java_package = "com.example.DistributedAssignment.cutomer_db.services";
+option java_outer_classname = "BuyerServices";
+option objc_class_prefix = "HLW";
+
+service BuyerItemServices {
+  rpc getBuyerPurchaseHistory(UserID) returns (stream PurchaseHistoryResponse) {}
+  rpc addToPurchaseHistory(PurchaseHistoryResponse) returns(Void) {}
+  rpc provideFeedback(FeedbackRequest) returns (Void) {}
+}
+
+message FeedbackRequest{
+  int32 purchaseID = 1;
+  int32 likeOrDislike = 2;
+  int32 sellerId = 3;
+}
+
+message PurchaseHistoryResponse {
+  int32 itemID = 1;
+  int32 quantity = 2;
+  int64 timestamp = 3;
+  int32 purchaseID = 4;
+  float feedback = 5;
+  int32 userID = 6;
+}
+
+//"itemID", "quantity", "timestamp" , "purchaseID", "feedback"

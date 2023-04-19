@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+import 'Common.proto';
+
+option java_multiple_files = true;
+option java_package = "com.example.DistributedAssignment.cutomer_db.services";
+option java_outer_classname = "GetSellerRatingService";
+option objc_class_prefix = "HLW";
+
+service GetSellerRating{
+  rpc getSellerRating(UserID) returns (SellerRating) {}
+}
+
+message SellerRating{
+  float sellerRating = 1;
+}
